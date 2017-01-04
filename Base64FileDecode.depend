@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1483461523 source:c:\users\obrelix\documents\base64filedecode\main.cpp
+	<iostream>
+	"io.h"
+	"base64.h"
+	<stdlib.h>
+
+1483461422 c:\users\obrelix\documents\base64filedecode\io.h
+	<string>
+	<cstdlib>
+	<fstream>
+	"windows.h"
+	"Base64.h"
+	<Lmcons.h>
+	<iostream>
+	<streambuf>
+
+1483144133 c:\users\obrelix\documents\base64filedecode\base64.h
+	<string>
+

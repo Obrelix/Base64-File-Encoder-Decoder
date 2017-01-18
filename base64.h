@@ -14,38 +14,44 @@ static inline bool is_base64(unsigned char c) {
   return (isalnum(c) || (c == '+') || (c == '/'));
 }
 
-const std::string &SALT1 = "HH::MM::SS";
-const std::string &SALT2 = "87_{:/}-";
-const std::string &SALT3 = "KazablancaRC-98";
+const std::string &SALT1 = "asFH24WEoia124kn";
+const std::string &SALT2 = "hd28m+24nS";
+const std::string &SALT3 = "jdabnSimOWn24nBS92EU";
+const std::string &SALT4 = "82bsfdKNwrWF";
 
 std::string EncryptMix(std::string s)
 {
-//    s = SALT1 + s + SALT2 + SALT3;
+
     s = encrypt(reinterpret_cast<const unsigned char*>(s.c_str()), s.length());
     s.insert(7, SALT3);
     s += SALT1;
     s = encrypt(reinterpret_cast<const unsigned char*>(s.c_str()), s.length());
+    s.insert(59, SALT4);
     s = SALT2 + SALT3 + SALT1 + s;
     s = encrypt(reinterpret_cast<const unsigned char*>(s.c_str()), s.length());
-    s.insert(1, "0v");
+    s.insert(1, SALT2);
+    s.insert(45, SALT3);
     s = encrypt(reinterpret_cast<const unsigned char*>(s.c_str()), s.length());
-    s.insert(7, "Na");
+    s.insert(32, SALT4);
+    s.insert(62, SALT1);
     s = encrypt(reinterpret_cast<const unsigned char*>(s.c_str()), s.length());
     return s;
 }
 std::string DecryptMix(std::string s)
 {
     s = decrypt(s);
-    s.erase(7, 2);
+    s.erase(62, SALT1.length());
+    s.erase(32, SALT4.length());
     s = decrypt(s);
-    s.erase(1, 2);
+    s.erase(45, SALT3.length());
+    s.erase(1, SALT2.length());
     s = decrypt(s);
     s.erase(0,(SALT2.length() + SALT3.length() + SALT1.length()));
+    s.erase(59, SALT4.length());
     s = decrypt(s);
     s.erase((s.length()-SALT1.length() -1), SALT1.length());
     s.erase(7, SALT3.length());
     s = decrypt(s);
-//    s.erase(0,(SALT1.length() + SALT3.length() + SALT1.length()));
     return s;
 }
 

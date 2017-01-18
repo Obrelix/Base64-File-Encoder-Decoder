@@ -18,3 +18,22 @@
 1483144133 c:\users\obrelix\documents\base64filedecode\base64.h
 	<string>
 
+1484760598 source:c:\users\obrelix\source\repos\gitfiledecode\main.cpp
+	<iostream>
+	"io.h"
+	"base64.h"
+	<stdlib.h>
+
+1484760593 c:\users\obrelix\source\repos\gitfiledecode\io.h
+	<string>
+	<cstdlib>
+	<fstream>
+	"windows.h"
+	"Base64.h"
+	<Lmcons.h>
+	<iostream>
+	<streambuf>
+
+1484762492 c:\users\obrelix\source\repos\gitfiledecode\base64.h
+	<string>
+
